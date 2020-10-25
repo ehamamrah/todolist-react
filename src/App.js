@@ -48,7 +48,10 @@ function App() {
         Clear Completed Tasks
       </button>
       <div>
-        Pending Tasks <span className="badge badge-primary">{todos.length}</span>
+        Pending Tasks
+        <span className="badge badge-primary">
+          { todos.filter(task => !task.complete).length }
+        </span>
       </div>
     </>
   )
