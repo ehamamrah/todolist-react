@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import TodoList from './ToDoList';
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(['Todo 1', 'Todo 2']);
 
   return (
     <>
-      <TodoList />
+      <TodoList todos={todos} />
       <input type="text" />
       <button class="btn btn-success">
         Add Task
@@ -15,7 +15,7 @@ function App() {
         Clear Completed Tasks
       </button>
       <div>
-        Pending Tasks <span class="badge badge-primary">0</span>
+        Pending Tasks <span class="badge badge-primary">{todos.length}</span>
       </div>
     </>
   )
