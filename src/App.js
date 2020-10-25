@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import TodoList from './ToDoList';
+import TodoList from './tasks/ToDoList';
 import uuidv4 from 'uuid/v4';
 
 const LOCAL_STORAGE_KEY = 'tasks';
@@ -37,6 +37,11 @@ function App() {
     taskNameRef.current.value = null; // Make the field empty after getting the task
   }
 
+  function handleClearCompleted(){
+    const newTasks = todos.filter(task => !task.complete);
+    setTasks(newTasks);
+  }
+
   return (
     <>
       <TodoList todos={todos} toggleTask={toggleTask} />
@@ -44,7 +49,7 @@ function App() {
       <button className="btn btn-success" onClick={handleAddTask}>
         Add Task
       </button>
-      <button className="btn btn-danger">
+      <button className="btn btn-danger" onClick={handleClearCompleted}>
         Clear Completed Tasks
       </button>
       <div>
