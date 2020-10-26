@@ -64,7 +64,7 @@ function App() {
               <hr className="mb-2"/>
             </div>
             <div className="input-group mb-2">
-              <input type="text" ref={taskNameRef} onKeyPress={handleAddTask} placeholder="Write todo task .. Use 'Enter' key or click 'Create Task'" className="form-control" aria-describedby="inputGroup-sizing-default" />
+              <input type="text" ref={taskNameRef} onKeyPress={handleAddTask} placeholder="Write a task .. Use 'Enter' key or click 'Create Task'" className="form-control" aria-describedby="inputGroup-sizing-default" />
             </div>
             <div className='float-left'>
               <button className="btn btn-outline-success btn-sm" onClick={handleAddTask}>
@@ -83,7 +83,7 @@ function App() {
             <div className="alert alert-info" role="alert">
               <BsFillInfoCircleFill />
               <span className='pl-2'>Pending Tasks</span>
-              <span className="badge badge-warning ml-2">
+              <span className="badge badge-pill badge-light ml-2">
                 { todos.filter(task => !task.complete).length }
               </span>
             </div>
