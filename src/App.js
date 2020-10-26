@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import TodoList from './tasks/ToDoList';
 import uuidv4 from 'uuid/v4';
-import { BsFillTrashFill, BsFileEarmarkPlus } from 'react-icons/bs';
+import {
+  BsFillTrashFill, BsFileEarmarkPlus,
+  BsFillInfoCircleFill, BsLayersFill
+} from 'react-icons/bs';
 
 const LOCAL_STORAGE_KEY = 'tasks';
 
@@ -47,18 +50,40 @@ function App() {
     <>
       <div className='container' >
         <div className='row'>
-          <div className='mx-auto pt-5'>
+          <div className='col-md-6 offset-md-3 pt-5'>
+            <h2>
+              <BsLayersFill /> Holla,
+              <small className="text-muted"> Enjoy adding tasks</small>
+            </h2>
+          </div>
+        </div>
+        <div className='row'>
+          <div className='col-md-6 offset-md-3 pt-5'>
             <TodoList todos={todos} toggleTask={toggleTask} />
-            <input type="text" ref={taskNameRef} />
-            <button className="btn btn-success" onClick={handleAddTask}>
-              <BsFileEarmarkPlus /> Create Task
-            </button>
-            <button className="btn btn-danger" onClick={handleClearCompleted}>
-              <BsFillTrashFill /> Clear Completed
-            </button>
-            <div>
-              Pending Tasks
-              <span className="badge badge-primary">
+            <div className='mt-5'>
+              <hr className="mb-2"/>
+            </div>
+            <div className="input-group mb-2">
+              <input type="text" ref={taskNameRef} onKeyPress={handleAddTask} placeholder="Write todo task .. Use 'Enter' key or click 'Create Task'" className="form-control" aria-describedby="inputGroup-sizing-default" />
+            </div>
+            <div className='float-left'>
+              <button className="btn btn-outline-success btn-sm" onClick={handleAddTask}>
+                <BsFileEarmarkPlus /> Create Task
+              </button>
+            </div>
+            <div className='float-right'>
+              <button className="btn btn-outline-danger btn-sm" onClick={handleClearCompleted}>
+                <BsFillTrashFill /> Clear Completed
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className='row'>
+          <div className='col-md-6 offset-md-3 pt-5'>
+            <div className="alert alert-info" role="alert">
+              <BsFillInfoCircleFill />
+              <span className='pl-2'>Pending Tasks</span>
+              <span className="badge badge-warning ml-2">
                 { todos.filter(task => !task.complete).length }
               </span>
             </div>
