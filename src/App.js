@@ -41,6 +41,13 @@ function App() {
     taskNameRef.current.value = null; // Make the field empty after getting the task
   }
 
+  function handleEnterTask(e){
+    // It triggers pressing the enter key
+    if (e.key === 'Enter') {
+      handleAddTask();
+    }
+  }
+
   function handleClearCompleted(){
     const newTasks = todos.filter(task => !task.complete);
     setTasks(newTasks);
@@ -64,7 +71,7 @@ function App() {
               <hr className="mb-2"/>
             </div>
             <div className="input-group mb-2">
-              <input type="text" ref={taskNameRef} onKeyPress={handleAddTask} placeholder="Write a task .. Use 'Enter' key or click 'Create Task'" className="form-control" aria-describedby="inputGroup-sizing-default" />
+              <input type="text" ref={taskNameRef} onKeyPress={handleEnterTask} placeholder="Write a task .. Use 'Enter' key or click 'Create Task'" className="form-control" aria-describedby="inputGroup-sizing-default" />
             </div>
             <div className='float-left'>
               <button className="btn btn-outline-success btn-sm" onClick={handleAddTask}>
